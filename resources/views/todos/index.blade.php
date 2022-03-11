@@ -54,5 +54,8 @@
             </tbody>
             @endisset
         </table>
+        @isset($todos)
+            {{ $todos->links() }}
+        @endisset
     </div>
 @endsection
