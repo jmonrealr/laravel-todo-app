@@ -30,7 +30,7 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Todo</a>
+                            <a class="nav-link" href="{{ route('todos.index') }}">Todo</a>
                         </li>
                     </ul>
                 </div>
@@ -38,6 +38,7 @@
         </nav>
 
         <div class="container">
+            @include('alerts')
             @yield('content')
         </div>
     </body>
