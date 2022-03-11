@@ -36,9 +36,12 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'todo' => 'required|string|max:255',
-            'done' => 'required|numeric'
+            'todo' => 'required|string|max:255'
         ]);
+        $done = isset($request->done[0]) ? 1 : 0;
+        $request->request->add(['done' =>$done]);
+        Todo::create($request->all());
+        return redirect()->route('todos.index')->with('success', 'Todo Created');
     }
 
     /**
@@ -49,7 +52,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        return view('todos.show', ['todo' => $todo]);
     }
 
     /**
@@ -60,7 +64,8 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        return view('todos.edit', ['todo' => $todo]);
     }
 
     /**
@@ -72,7 +77,14 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        $request->validate([
+            'todo' => 'required|string|max:255'
+        ]);
+        $done = isset($request->done[0]) ? 1 : 0;
+        $request->done = $done;
+        $todo->update($request->all());
+        return redirect()->route('todos.index')->with('success', 'Todo Updated');
     }
 
     /**
@@ -83,6 +95,8 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+        return redirect()->route('todos.index')->with('success', 'Todo Removed');
     }
 }
