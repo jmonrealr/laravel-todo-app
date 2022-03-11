@@ -6,7 +6,8 @@
 
 @section('content')
     <div class="row">
-        <form method="POST" action="{{ route('todos.store') }}">
+        <form method="POST" action="{{ route('todos.update', $todo->id) }}">
+            @method('PATCH')
             <div class="card">
                 <div class="card-body">
                     <h4 class="mb-5 fw-bold">Edit Todo #{{$todo->id}}</h4>

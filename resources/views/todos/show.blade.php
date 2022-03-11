@@ -24,9 +24,6 @@
             <a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
                 Back
             </a>
-            <button type="submit" class="btn btn-primary">
-                Save
-            </button>
         </div>
     </div>
 @endsection

@@ -82,7 +82,7 @@ class TodoController extends Controller
             'todo' => 'required|string|max:255'
         ]);
         $done = isset($request->done[0]) ? 1 : 0;
-        $request->done = $done;
+        $request['done'] = $done;
         $todo->update($request->all());
         return redirect()->route('todos.index')->with('success', 'Todo Updated');
     }
