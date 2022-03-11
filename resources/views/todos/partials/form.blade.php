@@ -8,6 +8,7 @@
                     {{$message}}
                 </span>
             @enderror
-            <input class="form-check-input" name="done[]" type="checkbox" value="done" id="done">
+            <input class="form-check-input" name="done[]" type="checkbox" value="done" id="done"
+                @isset($todo)@if($todo->done) checked @endif @endisset>
             <label class="form-check-label" for="done">done</label>
     </div>

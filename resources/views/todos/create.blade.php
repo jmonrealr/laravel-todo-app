@@ -18,7 +18,6 @@
 					Back
 				</a>
                 <button type="submit" class="btn btn-primary">
-					<i class="feather feather-save sidemenu_icon"></i>
 					Save
 				</button>
             </div>
